@@ -13,6 +13,6 @@ fun Npcs.nearestNpc(vararg ids: Int): Npc {
 }
 
 fun Npcs.druid(vararg ids: Int): Npc {
-   return stream().id(*ids).filtered { !it.healthBarVisible() || it.healthPercent() > 0 }.reachable().nearest().first()
+    return stream().id(*ids).filtered { !it.healthBarVisible() || it.healthPercent() > 0 }.reachable().nearest().first()
 }
 

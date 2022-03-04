@@ -9,7 +9,7 @@ import org.powbot.api.rt4.Prayer
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.tree.Leaf
 
-class UseAltar (script: Script) : Leaf<Script>(script, "Restoring Prayer") {
+class UseAltar(script: Script) : Leaf<Script>(script, "Restoring Prayer") {
 
     override fun execute() {
         val ALTAR = Objects.stream().type(GameObject.Type.INTERACTIVE).name("Altar").nearest().first()
@@ -18,7 +18,7 @@ class UseAltar (script: Script) : Leaf<Script>(script, "Restoring Prayer") {
             Condition.wait(ALTAR::inViewport, 500, 5)
         }
         if (ALTAR.interact("Pray-at")) {
-            Condition.wait {Prayer.prayerPoints() == Skill.Prayer.realLevel() }
+            Condition.wait { Prayer.prayerPoints() == Skill.Prayer.realLevel() }
         }
     }
 }
