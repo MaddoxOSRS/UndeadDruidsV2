@@ -2,6 +2,7 @@ package org.net.maddox
 
 import org.powbot.api.Area
 import org.powbot.api.Tile
+import org.powbot.api.rt4.Npcs
 
 object Constants {
     var HOSIDIOUS_BANK = Tile(1748, 3599, 0)
@@ -16,8 +17,9 @@ object Constants {
     const val FORTHOSENTRANCE = 34865;
     val ALTARS = 34900
     val ITEMS_TO_LOOT = arrayOf(995, 23499, 1397, 1399, 207).toIntArray()
-    const val BoneBoltsID = 8882;
-    const val RuneArrowID = 892;
+    const val BoneBoltsID = 8882
+    const val RuneArrowID = 892
     const val DRUIDS_ID = 2145
+    var TILE_DRUID = Tile(-1, -1, -1)
     const val ITEM_HOUSE_TELEPORT = "Teleport to house"
 }

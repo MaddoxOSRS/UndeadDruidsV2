@@ -1,6 +1,9 @@
 package org.net.maddox.branch
 
 import org.net.maddox.Constants
+import org.net.maddox.Constants.DRUIDS_ID
+import org.net.maddox.Constants.ITEMS_TO_LOOT
+import org.net.maddox.Constants.TILE_DRUID
 import org.net.maddox.Script
 import org.net.maddox.leaf.*
 import org.powbot.api.rt4.*
@@ -49,9 +52,10 @@ class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Br
     override val failedComponent: TreeComponent<Script> = AvoidMelee(script)
 
     override fun validate(): Boolean {
-        val druid = Npcs.stream().id(Constants.DRUIDS_ID).firstOrNull()
+        val druid = Npcs.stream().id(DRUIDS_ID).nearest().first()
+        var TILE_DRUID = Npcs.stream().id(DRUIDS_ID).nearest().first().tile()
         return !Players.local().healthBarVisible() || Players.local().interacting() != druid
-                || !druid.interacting().valid()
+                || !TILE_DRUID.valid()
     }
 
     class AvoidMelee(script: Script) : Branch<Script>(script, "Avoiding Melee") {
@@ -59,16 +63,15 @@ class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Br
         override val failedComponent: TreeComponent<Script> = PickupLoot(script)
 
         override fun validate(): Boolean {
-            return Npcs.stream().within(1).id(Constants.DRUIDS_ID).interactingWithMe().isNotEmpty()
+            return Npcs.stream().within(1).id(DRUIDS_ID).interactingWithMe().isNotEmpty()
         }
     }
 
     class PickupLoot(script: Script) : Branch<Script>(script, "Looting Items") {
         override val successComponent: TreeComponent<Script> = LootItems(script)
         override val failedComponent: TreeComponent<Script> = Chillax(script)
-
         override fun validate(): Boolean {
-            return GroundItems.stream().id(*Constants.ITEMS_TO_LOOT).within(Constants.DRUID_ATTACK_AREA).isNotEmpty()
+            return GroundItems.stream().id(*ITEMS_TO_LOOT).at(TILE_DRUID).isNotEmpty()
         }
     }
 }
