@@ -2,10 +2,7 @@ package org.net.maddox.branch
 
 import org.net.maddox.Constants
 import org.net.maddox.Script
-import org.net.maddox.leaf.ActivatePrayer
-import org.net.maddox.leaf.AttackDruid
-import org.net.maddox.leaf.Chillax
-import org.net.maddox.leaf.UseAltar
+import org.net.maddox.leaf.*
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Npcs
 import org.powbot.api.rt4.Players
@@ -52,10 +49,20 @@ class RestorePrayer(script: Script) : Branch<Script>(script, "Initiating Prayer 
 
 class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Branches") {
     override val successComponent: TreeComponent<Script> = AttackDruid(script)
-    override val failedComponent: TreeComponent<Script> = Chillax(script)
+    override val failedComponent: TreeComponent<Script> = AvoidMelee(script)
 
     override fun validate(): Boolean {
-        val druid = Npcs.stream().id(Constants.DRUIDS_ID).nearest().first()
+        val druid = Npcs.stream().id(Constants.DRUIDS_ID).firstOrNull()
         return !Players.local().healthBarVisible() || Players.local().interacting() != druid
+                || !druid.interacting().valid()
+    }
+
+    class AvoidMelee(script: Script) : Branch<Script>(script, "Avoiding Melee") {
+        override val successComponent: TreeComponent<Script> = DodgeMelee(script)
+        override val failedComponent: TreeComponent<Script> = Chillax(script)
+
+        override fun validate(): Boolean {
+            return Npcs.stream().within(1).id(Constants.DRUIDS_ID).interactingWithMe().isNotEmpty()
+        }
     }
 }
