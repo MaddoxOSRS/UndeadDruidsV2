@@ -14,10 +14,9 @@ class AttackDruid(script: Script) : Leaf<Script>(script, "Attacking Druid") {
     override fun execute() {
         val npc = Npcs.druid(Constants.DRUIDS_ID)
         if (!npc.inViewport()) {
-            Camera.turnTo(npc)
-        }
-        if (npc.inViewport() && npc.interact("Attack")) {
-            Condition.wait({ Players.local().healthBarVisible() }, 1000, 10)
-        }
+            if (npc.interact("Attack")) {
+                Condition.wait { Players.local().healthBarVisible() }
+            }
+        } else Camera.turnTo(npc)
     }
 }

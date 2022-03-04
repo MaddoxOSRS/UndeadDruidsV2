@@ -3,10 +3,7 @@ package org.net.maddox.branch
 import org.net.maddox.Constants
 import org.net.maddox.Script
 import org.net.maddox.leaf.*
-import org.powbot.api.rt4.Inventory
-import org.powbot.api.rt4.Npcs
-import org.powbot.api.rt4.Players
-import org.powbot.api.rt4.Prayer
+import org.powbot.api.rt4.*
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 
@@ -59,10 +56,19 @@ class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Br
 
     class AvoidMelee(script: Script) : Branch<Script>(script, "Avoiding Melee") {
         override val successComponent: TreeComponent<Script> = DodgeMelee(script)
-        override val failedComponent: TreeComponent<Script> = Chillax(script)
+        override val failedComponent: TreeComponent<Script> = PickupLoot(script)
 
         override fun validate(): Boolean {
             return Npcs.stream().within(1).id(Constants.DRUIDS_ID).interactingWithMe().isNotEmpty()
+        }
+    }
+
+    class PickupLoot(script: Script) : Branch<Script>(script, "Looting Items") {
+        override val successComponent: TreeComponent<Script> = LootItems(script)
+        override val failedComponent: TreeComponent<Script> = Chillax(script)
+
+        override fun validate(): Boolean {
+            return GroundItems.stream().id(*Constants.ITEMS_TO_LOOT).within(Constants.DRUID_ATTACK_AREA).isNotEmpty()
         }
     }
 }

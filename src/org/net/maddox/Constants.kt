@@ -15,6 +15,7 @@ object Constants {
     var NORTHERN_TILE = Tile(1800, 9945, 0)
     const val FORTHOSENTRANCE = 34865;
     val ALTARS = 34900
+    val ITEMS_TO_LOOT = arrayOf(995, 23499, 1397, 1399, 207).toIntArray()
     const val BoneBoltsID = 8882;
     const val RuneArrowID = 892;
     const val DRUIDS_ID = 2145

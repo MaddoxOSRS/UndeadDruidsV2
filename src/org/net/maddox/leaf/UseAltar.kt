@@ -18,8 +18,8 @@ class UseAltar(script: Script) : Leaf<Script>(script, "Restoring Prayer") {
             Camera.turnTo(ALTAR)
             Condition.wait(ALTAR::inViewport, 500, 5)
         } else
-        if (ALTAR.interact("Pray-at")) {
-            Condition.wait { Prayer.prayerPoints() == Skill.Prayer.realLevel() }
-        }
+            if (ALTAR.interact("Pray-at")) {
+                Condition.wait { Prayer.prayerPoints() == Skill.Prayer.realLevel() }
+            }
     }
 }
