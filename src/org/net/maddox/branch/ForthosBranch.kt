@@ -19,7 +19,7 @@ class InventoryFull(script: Script) : Branch<Script>(script, "Inventory is full,
 
 class AtDruids(script: Script) : Branch<Script>(script, "At Druids") {
     override val successComponent: TreeComponent<Script> = CheckPrayer(script)
-    override val failedComponent: TreeComponent<Script> = GOTODRUIDS(script)
+    override val failedComponent: TreeComponent<Script> = GoToDruids(script)
 
     override fun validate(): Boolean {
         return Constants.DRUID_ATTACK_AREA.contains(Players.local())

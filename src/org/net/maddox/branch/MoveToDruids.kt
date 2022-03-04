@@ -8,7 +8,7 @@ import org.powbot.api.rt4.Players
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 
-class GOTODRUIDS(script: Script) : Branch<Script>(script, "Going to Druids") {
+class GoToDruids(script: Script) : Branch<Script>(script, "Going to Druids") {
     override val successComponent: TreeComponent<Script> = CheckPrayer(script)
     override val failedComponent: TreeComponent<Script> = MovingBranch(script)
 
