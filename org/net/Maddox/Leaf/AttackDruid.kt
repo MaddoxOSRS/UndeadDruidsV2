@@ -11,7 +11,7 @@ import org.powbot.api.Notifications
 import org.powbot.api.rt4.*
 import org.powbot.mobile.script.ScriptManager
 
-class AttackDruid  (script: Script) : Leaf<Script>(script, "Looting Items") {
+class AttackDruid (script: Script) : Leaf<Script>(script, "Attacking Druid") {
     override fun execute() {
         val npc = Npcs.druid(Constants.DRUIDS)
             if (npc.inViewport() && npc.interact("Attack")) {

@@ -26,11 +26,11 @@ import org.powbot.mobile.service.ScriptUploader
 class Script : TreeScript(){
     override val rootComponent: TreeComponent<*> by lazy {
     IsBankOpened(this)
+
 }
-   // lateinit var configuration: Configs
+
     override fun onStart(){
         super.onStart()
-        //extractConfiguration()
         addPaint()
     }
     /**
