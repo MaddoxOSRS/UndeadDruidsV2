@@ -1,20 +1,13 @@
-package Branch
+package org.net.maddox.branch
 
 import Constants
-import Leaf.ActivatePrayer
-import Leaf.AttackDruid
-import Leaf.EnterForthos
-import Leaf.Idle
-import Leaf.MovetoDruids
-import Leaf.OpenBank
-import Script
-import org.powbot.api.rt4.Combat
+import org.net.maddox.leaf.*
+import org.net.maddox.Script
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Players
 import org.powbot.api.rt4.Prayer
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
-import kotlin.random.Random
 
 class ActivatePrayer(script: Script) : Branch<Script>(script, "Activating Prayer") {
     override val successComponent: TreeComponent<Script> = ActivatePrayer(script)
@@ -29,26 +22,27 @@ class ActivatePrayer(script: Script) : Branch<Script>(script, "Activating Prayer
 
 class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Branches") {
     override val successComponent: TreeComponent<Script> = AttackDruid(script)
-    override val failedComponent: TreeComponent<Script> = Moving(script)
+    override val failedComponent: TreeComponent<Script> = Idle.MovingtoDruids(script)
 
     override fun validate(): Boolean {
-        return Constants.DRUID_ATTACK_AREA.contains(Players.local()) && Inventory.stream().name("Teleport to house").isNotEmpty() && Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC)
+        return Constants.DRUID_ATTACK_AREA.contains(Players.local()) && Inventory.stream().name("Teleport to house").isNotEmpty()
+                && Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC) && !Players.local().healthBarVisible()
     }
 }
 class Idle(script: Script) : Branch<Script>(script, "Initiating Idle") {
-    override val successComponent: TreeComponent<Script> = Idle(script)
+    override val successComponent: TreeComponent<Script> = Chillax(script)
     override val failedComponent: TreeComponent<Script> = RestorePrayer(script)
 
     override fun validate(): Boolean {
         return Players.local().healthBarVisible()
     }
 
-class RestorePrayer(script: Script) : Branch<Script>(script, "Initiating Druid Branches") {
-        override val successComponent: TreeComponent<Script> = Leaf.Idle(script)
-        override val failedComponent: TreeComponent<Script> = (script)
+class RestorePrayer(script: Script) : Branch<Script>(script, "Initiating Prayer Restore") {
+        override val successComponent: TreeComponent<Script> = UseAltar(script)
+        override val failedComponent: TreeComponent<Script> = CombatBranch(script)
 
         override fun validate(): Boolean {
-            return Prayer.prayerPoints() < Random.nextInt(9, 20) || Prayer.prayerPoints() == 0
+            return Prayer.prayerPoints() < 20 || Prayer.prayerPoints() == 0
         }
 }
 

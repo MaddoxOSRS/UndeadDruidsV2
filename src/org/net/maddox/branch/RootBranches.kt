@@ -1,8 +1,8 @@
-package Branch
+package org.net.maddox.branch
 
 
 
-import Script
+import org.net.maddox.Script
 import org.powbot.api.rt4.Bank
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent

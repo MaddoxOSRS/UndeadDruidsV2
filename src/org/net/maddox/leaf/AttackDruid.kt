@@ -1,19 +1,19 @@
-package Leaf
+package org.net.maddox.leaf
 
 
 import Constants
 import org.powbot.api.script.tree.Leaf
-import Script
+import org.net.maddox.Script
 import extensions.druid
-import extensions.nearestNpc
 import org.powbot.api.Condition
-import org.powbot.api.Notifications
 import org.powbot.api.rt4.*
-import org.powbot.mobile.script.ScriptManager
 
 class AttackDruid (script: Script) : Leaf<Script>(script, "Attacking Druid") {
     override fun execute() {
         val npc = Npcs.druid(Constants.DRUIDS)
+        if (!npc.inViewport()) {
+            Camera.turnTo(npc)
+        }
             if (npc.inViewport() && npc.interact("Attack")) {
                 Condition.wait({Players.local().healthBarVisible()}, 1000, 10)
             }

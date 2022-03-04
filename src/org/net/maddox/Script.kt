@@ -1,16 +1,14 @@
-import Branch.IsBankOpened
+package org.net.maddox
+
+import branch.IsBankOpened
 import org.powbot.api.Color
-import org.powbot.api.Notifications
 import org.powbot.api.rt4.walking.model.Skill
-import org.powbot.api.script.OptionType
 import org.powbot.api.script.ScriptCategory
-import org.powbot.api.script.ScriptConfiguration
 import org.powbot.api.script.ScriptManifest
 import org.powbot.api.script.paint.Paint
 import org.powbot.api.script.paint.PaintBuilder
 import org.powbot.api.script.tree.TreeComponent
 import org.powbot.api.script.tree.TreeScript
-import org.powbot.mobile.script.ScriptManager
 import org.powbot.mobile.service.ScriptUploader
 
 @ScriptManifest(

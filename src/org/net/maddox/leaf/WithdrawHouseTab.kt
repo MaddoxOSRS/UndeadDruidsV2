@@ -1,7 +1,7 @@
-package Leaf
+package org.net.maddox.leaf
 
 import Constants
-import Script
+import org.net.maddox.Script
 import extensions.count
 import extensions.mustWithdrawItem
 import org.powbot.api.rt4.Bank

@@ -1,8 +1,7 @@
-package Branch
+package org.net.maddox.branch
 
-import Leaf.CloseBank
-import Leaf.WithdrawHouseTab
-import Script
+import org.net.maddox.leaf.*
+import org.net.maddox.Script
 import org.powbot.api.rt4.Inventory.stream
 import org.powbot.api.rt4.Players
 import org.powbot.api.script.tree.Branch
