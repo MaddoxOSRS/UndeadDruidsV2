@@ -1,7 +1,7 @@
 package org.net.maddox.leaf
 
 
-import Constants
+import org.net.maddox.Constants
 import org.powbot.api.script.tree.Leaf
 import org.net.maddox.Script
 import extensions.druid

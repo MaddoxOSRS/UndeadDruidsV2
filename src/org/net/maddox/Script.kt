@@ -1,6 +1,6 @@
 package org.net.maddox
 
-import branch.IsBankOpened
+import org.net.maddox.branch.*
 import org.powbot.api.Color
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.ScriptCategory

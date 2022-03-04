@@ -1,3 +1,5 @@
+package org.net.maddox
+
 import org.powbot.api.Area
 import org.powbot.api.Tile
 

@@ -1,6 +1,6 @@
 package org.net.maddox.branch
 
-import Constants
+import org.net.maddox.Constants
 import org.net.maddox.leaf.*
 import org.net.maddox.Script
 import org.powbot.api.rt4.Inventory
@@ -8,6 +8,18 @@ import org.powbot.api.rt4.Players
 import org.powbot.api.rt4.Prayer
 import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
+
+
+class InventoryFull(script: Script) : Branch<Script>(script, "Inventory is full, Banking.") {
+    override val successComponent: TreeComponent<Script> = ActivatePrayer(script)
+    override val failedComponent: TreeComponent<Script> = CombatBranch(script)
+
+    override fun validate(): Boolean {
+        return Constants.DRUID_ATTACK_AREA.contains(Players.local())
+                && Inventory.stream().name("Teleport to house").isNotEmpty() &&
+                !Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC)
+    }
+}
 
 class ActivatePrayer(script: Script) : Branch<Script>(script, "Activating Prayer") {
     override val successComponent: TreeComponent<Script> = ActivatePrayer(script)
