@@ -8,7 +8,7 @@ import org.powbot.api.rt4.GroundItems
 import org.powbot.api.rt4.Npcs
 import org.powbot.api.script.tree.Leaf
 
-class Chillax(script: Script) : Leaf<Script>(script, "Chillax") {
+class Chillax(script: Script) : Leaf<Script>(script, "Sippin' Tea") {
 
     override fun execute() {
         val druid = Npcs.stream().id(Constants.DRUIDS_ID).firstOrNull()

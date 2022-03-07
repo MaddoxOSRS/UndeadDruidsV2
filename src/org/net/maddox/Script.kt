@@ -31,15 +31,6 @@ class Script : TreeScript() {
         addPaint()
     }
 
-    /**
-     *  This method extracts the configuration from the GUI which is presented via the class annotations.
-     */
-    /*   private fun extractConfiguration() {
-           val lootValue = getOption<Int>("Grab Items above GP Value:")
-
-           configuration = Configs(lootValue)
-       }*/
-
     private fun addPaint() {
         val p: Paint = PaintBuilder.newBuilder()
             .addString("Last leaf:") { lastLeaf.name }
