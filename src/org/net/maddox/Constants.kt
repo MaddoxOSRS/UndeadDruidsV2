@@ -2,7 +2,6 @@ package org.net.maddox
 
 import org.powbot.api.Area
 import org.powbot.api.Tile
-import org.powbot.api.rt4.Npcs
 
 object Constants {
     val HOSIDIOUS_BANK = Tile(1748, 3599, 0)
@@ -12,9 +11,10 @@ object Constants {
     val OUTSIDE_HOUSE = Area(Tile(1737, 3605, 0), Tile(1763, 3509, 0))
     val FORTHOS_STAIRCASE = Tile(1669, 3567, 0)
     val NORTHERN_TILE = Tile(1800, 9945, 0)
-    const val FORTHOSENTRANCE = 34865;
+    const val FORTHOSENTRANCE = 34865
     val ALTARS = 34900
-    val ITEMS_TO_LOOT = arrayOf(995, 23499, 1397, 1399, 207, 560, 564, 565, 561, 563, 4698, 5295, 5300, 3138, 245, 239).toIntArray()
+    val ITEMS_TO_LOOT =
+        arrayOf(995, 23499, 1397, 1399, 207, 560, 564, 565, 561, 563, 4698, 5295, 5300, 3138, 245, 239).toIntArray()
     const val BoneBoltsID = 8882
     const val RuneArrowID = 892
     const val DRUIDS_ID = 2145

@@ -44,6 +44,7 @@ class Script : TreeScript() {
         val p: Paint = PaintBuilder.newBuilder()
             .addString("Last leaf:") { lastLeaf.name }
             .trackSkill(Skill.Ranged)
+            .trackInventoryItems(*Constants.ITEMS_TO_LOOT)
             .backgroundColor(Color.argb(255, 117, 124, 168))
             .build()
         addPaint(p)
@@ -51,5 +52,5 @@ class Script : TreeScript() {
 }
 
 fun main(args: Array<String>) {
-    ScriptUploader().uploadAndStart("UndeadDruids", "bact", "127.0.0.1:5575", true, false)
+    ScriptUploader().uploadAndStart("UndeadDruids", "cmepkurday", "127.0.0.1:5585", true, false)
 }
