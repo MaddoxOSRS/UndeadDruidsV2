@@ -11,7 +11,7 @@ object Constants {
     val OUTSIDE_HOUSE = Area(Tile(1737, 3605, 0), Tile(1763, 3509, 0))
     val FORTHOS_ENTRANCE = Area(Tile(1669, 3569, 0), Tile(1672, 3564, 0))
     val ITEMS_TO_LOOT =
-        arrayOf(995, 23499, 1397, 1399, 207, 560, 564, 565, 561, 563, 4698, 5295, 5300, 3138, 245, 239).toIntArray()
+        arrayOf(995, 23499, 1397, 1399, 207, 560, 564, 565, 561, 563, 4698, 5295, 5300, 3138, 245, 239, 213).toIntArray()
 
 
     const val FORTHOSENTRANCE = 34865

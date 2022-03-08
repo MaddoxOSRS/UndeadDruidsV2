@@ -30,7 +30,7 @@ class PickupLoot(script: Script) : Branch<Script>(script, "Looting Items") {
     override val successComponent: TreeComponent<Script> = LootItems(script)
     override val failedComponent: TreeComponent<Script> = CheckPrayer(script)
     override fun validate(): Boolean {
-        return GroundItems.stream().id(*Constants.ITEMS_TO_LOOT).within(Constants.DRUID_ATTACK_AREA).isNotEmpty()
+        return GroundItems.stream().id(*Constants.ITEMS_TO_LOOT).at(Constants.TILE_DRUID).isNotEmpty()
     }
 }
 
