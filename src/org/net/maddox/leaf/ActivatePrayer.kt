@@ -9,7 +9,7 @@ import org.powbot.api.script.tree.Leaf
 class ActivatePrayer(script: Script) : Leaf<Script>(script, "Activing Protect from Magic") {
     override fun execute() {
         if (
-        Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, true)) {
+            Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, true)) {
             Game.closeOpenTab()
             Condition.wait { Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC) }
         }

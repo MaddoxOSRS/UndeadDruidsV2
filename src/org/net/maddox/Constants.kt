@@ -4,7 +4,7 @@ import org.powbot.api.Area
 import org.powbot.api.Tile
 
 object Constants {
-    val HOSIDIOUS_BANK = Tile(1748, 3599, 0)
+    val HOSIDIOUS_BANK = Area(Tile(1745, 3601, 0), Tile(1752, 3594, 0))
     val DRUID_AREA = Area(Tile(1803, 9957, 0), Tile(1797, 9951, 0))
     val FORTHOS_DUNGEON = Area(Tile(1791, 9982, 0), Tile(1822, 9916, 0))
     val DRUID_ATTACK_AREA = Area(Tile(1795, 9957, 0), Tile(1806, 9934, 0))
