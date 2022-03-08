@@ -12,23 +12,23 @@ object Constants {
     val FORTHOS_ENTRANCE = Area(Tile(1669, 3569, 0), Tile(1672, 3564, 0))
     val ITEMS_TO_LOOT =
         arrayOf(
-            995,
-            23499,
-            1397,
-            1399,
-            207,
-            560,
-            564,
-            565,
-            561,
-            563,
-            4698,
-            5295,
-            5300,
-            3138,
-            245,
-            239,
-            213
+            995, //coins
+            23499, //Grubby key
+            1397, //Air battlestaff
+            1399, //Earth battlestaff
+            207, //Grimy Ranarr
+            560, //Death rune
+            564, //Cosmic rune
+            565, //Blood rune
+            561, //Nature rune
+            563, //Law rune
+            4698, //Mud rune
+            5295, //Ranarr seed
+            5300, //Snapdragon seed
+            3139, //Potato cactus
+            246, //Wine of Zamorak
+            240, //White berries
+            213 //Grimy kwuarm
         ).toIntArray()
 
 
