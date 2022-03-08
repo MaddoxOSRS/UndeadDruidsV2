@@ -43,5 +43,5 @@ class Script : TreeScript() {
 }
 
 fun main(args: Array<String>) {
-    ScriptUploader().uploadAndStart("UndeadDruids", "cmepkurday", "127.0.0.1:5585", true, false)
+    ScriptUploader().uploadAndStart("UndeadDruids", "", "127.0.0.1:5585", true, false)
 }
