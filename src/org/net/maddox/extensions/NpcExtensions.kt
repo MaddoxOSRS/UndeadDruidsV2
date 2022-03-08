@@ -9,7 +9,6 @@ fun Npcs.nearestNpc(vararg names: String): Npc {
 
 fun Npcs.nearestNpc(vararg ids: Int): Npc {
     return stream().id(*ids).nearest().first()
-    //Npcs.nearestNpc(Constants.DRUIDS).interacting().valid() || Npcs.nearestNpc(Constants.DRUIDS).equals(Players.local())
 }
 
 fun Npcs.druid(vararg ids: Int): Npc {

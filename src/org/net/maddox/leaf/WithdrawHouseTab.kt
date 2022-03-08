@@ -12,6 +12,7 @@ class WithdrawHouseTab(script: Script) : Leaf<Script>(script, "Withdrawing tab")
 
     override fun execute() {
         if (Inventory.count(Constants.ITEM_HOUSE_TELEPORT) == 0) {
+            Bank.depositInventory()
             Bank.mustWithdrawItem(Constants.ITEM_HOUSE_TELEPORT, 1)
         }
     }

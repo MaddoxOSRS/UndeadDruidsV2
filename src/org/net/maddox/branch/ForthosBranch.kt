@@ -13,7 +13,7 @@ class InventoryFull(script: Script) : Branch<Script>(script, "Inventory is full,
     override val failedComponent: TreeComponent<Script> = AtDruids(script)
 
     override fun validate(): Boolean {
-        return Inventory.isFull()
+        return Inventory.isFull() || Inventory.stream().name("Teleport to house").isEmpty()
     }
 }
 
@@ -57,9 +57,7 @@ class CombatBranch(script: Script) : Branch<Script>(script, "Initiating Druid Br
     override val failedComponent: TreeComponent<Script> = AvoidMelee(script)
 
     override fun validate(): Boolean {
-        val druid = Npcs.stream().id(Constants.DRUIDS_ID).firstOrNull()
-        return Players.local().interacting() != druid
-                || !druid.valid()
+        return Players.local().interacting() == Actor.Nil || Players.local().interacting().healthPercent() == 0
     }
 
     class AvoidMelee(script: Script) : Branch<Script>(script, "Avoiding Melee") {

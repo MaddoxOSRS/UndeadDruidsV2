@@ -17,8 +17,8 @@ class GoToDruids(script: Script) : Branch<Script>(script, "Going to Druids") {
     }
 
     class MovingBranch(script: Script) : Branch<Script>(script, "Moving to Forthos") {
-        override val successComponent: TreeComponent<Script> = MovetoDruids(script)
-        override val failedComponent: TreeComponent<Script> = EnterForthos(script)
+        override val successComponent: TreeComponent<Script> = EnterForthos(script)
+        override val failedComponent: TreeComponent<Script> = MovetoDruids(script)
 
         override fun validate(): Boolean {
             return !Constants.FORTHOS_DUNGEON.contains(Players.local())

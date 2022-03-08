@@ -17,6 +17,6 @@ class EnterForthos(script: Script) : Leaf<Script>(script, "Entering Forthos Dung
             if (forthosentrance.interact("Climb-down")) {
                 Condition.wait { Constants.FORTHOS_DUNGEON.contains(Players.local()) }
             }
-        } else Movement.step(Constants.FORTHOS_STAIRCASE)
+        } else Movement.moveTo(Constants.FORTHOS_ENTRANCE.randomTile)
     }
 }

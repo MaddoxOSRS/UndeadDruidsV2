@@ -10,6 +10,7 @@ object Constants {
     val DRUID_ATTACK_AREA = Area(Tile(1795, 9957, 0), Tile(1806, 9934, 0))
     val OUTSIDE_HOUSE = Area(Tile(1737, 3605, 0), Tile(1763, 3509, 0))
     val FORTHOS_STAIRCASE = Tile(1669, 3567, 0)
+    val FORTHOS_ENTRANCE = Area(Tile(1669, 3569, 0), Tile(1672, 3564, 0))
     val NORTHERN_TILE = Tile(1800, 9945, 0)
     const val FORTHOSENTRANCE = 34865
     val ALTARS = 34900
