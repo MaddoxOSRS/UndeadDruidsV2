@@ -1,4 +1,4 @@
-package extensions
+package org.net.maddox.extensions
 
 import org.powbot.api.rt4.Inventory
 

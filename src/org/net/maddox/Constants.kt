@@ -10,13 +10,17 @@ object Constants {
     val DRUID_ATTACK_AREA = Area(Tile(1795, 9957, 0), Tile(1806, 9934, 0))
     val OUTSIDE_HOUSE = Area(Tile(1737, 3605, 0), Tile(1763, 3509, 0))
     val FORTHOS_ENTRANCE = Area(Tile(1669, 3569, 0), Tile(1672, 3564, 0))
-    const val FORTHOSENTRANCE = 34865
-    val ALTARS = 34900
     val ITEMS_TO_LOOT =
         arrayOf(995, 23499, 1397, 1399, 207, 560, 564, 565, 561, 563, 4698, 5295, 5300, 3138, 245, 239).toIntArray()
-    const val BoneBoltsID = 8882
-    const val RuneArrowID = 892
-    const val DRUIDS_ID = 2145
-    var TILE_DRUID = Tile(-1, -1, -1)
+
+
+    const val FORTHOSENTRANCE = 34865
+    const val ID_ALTARS = 34900
     const val ITEM_HOUSE_TELEPORT = "Teleport to house"
+    const val ID_BONEBOLTS = 8882
+    const val ID_RUNEARROWS = 892
+    const val DRUIDS_ID = 2145
+
+
+    var TILE_DRUID = Tile(-1, -1, -1)
 }

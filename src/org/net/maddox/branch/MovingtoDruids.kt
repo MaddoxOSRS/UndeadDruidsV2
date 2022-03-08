@@ -9,11 +9,11 @@ import org.powbot.api.script.tree.Branch
 import org.powbot.api.script.tree.TreeComponent
 
 class GoToDruids(script: Script) : Branch<Script>(script, "Going to Druids") {
-    override val successComponent: TreeComponent<Script> = CheckPrayer(script)
-    override val failedComponent: TreeComponent<Script> = MovingBranch(script)
+    override val successComponent: TreeComponent<Script> = MovingBranch(script)
+    override val failedComponent: TreeComponent<Script> = CheckPrayer(script)
 
     override fun validate(): Boolean {
-        return Constants.DRUID_ATTACK_AREA.contains(Players.local())
+        return !Constants.DRUID_ATTACK_AREA.contains(Players.local())
     }
 
     class MovingBranch(script: Script) : Branch<Script>(script, "Moving to Forthos") {

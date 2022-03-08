@@ -13,7 +13,7 @@ import org.powbot.api.script.tree.Leaf
 class UseAltar(script: Script) : Leaf<Script>(script, "Restoring Prayer") {
 
     override fun execute() {
-        val ALTAR = Objects.stream().type(GameObject.Type.INTERACTIVE).id(Constants.ALTARS).nearest().first()
+        val ALTAR = Objects.stream().type(GameObject.Type.INTERACTIVE).id(Constants.ID_ALTARS).nearest().first()
         if (!ALTAR.valid() || !ALTAR.inViewport()) {
             Camera.turnTo(ALTAR)
             Condition.wait(ALTAR::inViewport, 500, 5)
