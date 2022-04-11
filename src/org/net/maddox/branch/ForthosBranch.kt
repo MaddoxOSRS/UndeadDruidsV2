@@ -40,28 +40,28 @@ class PickupLoot(script: Script) : Branch<Script>(script, "Looting Items") {
 
 class EatFood(script: Script) : Branch<Script>(script, "Initiating Prayer Restore") {
     override val successComponent: TreeComponent<Script> = EatLeaf(script)
-    override val failedComponent: TreeComponent<Script> = CheckPrayer(script)
+    override val failedComponent: TreeComponent<Script> = RestorePrayer(script)
 
     override fun validate(): Boolean {
         return Configs.usefood && Combat.healthPercent() <= 65
     }
 }
 
+class RestorePrayer(script: Script) : Branch<Script>(script, "Initiating Prayer Restore") {
+    override val successComponent: TreeComponent<Script> = UseAltar(script)
+    override val failedComponent: TreeComponent<Script> = CheckPrayer(script)
+
+    override fun validate(): Boolean {
+        return Prayer.prayerPoints() < 25
+    }
+}
+
 class CheckPrayer(script: Script) : Branch<Script>(script, "Activating Prayer") {
-    override val successComponent: TreeComponent<Script> = RestorePrayer(script)
+    override val successComponent: TreeComponent<Script> = CombatBranch(script)
     override val failedComponent: TreeComponent<Script> = ActivatePrayer(script)
 
     override fun validate(): Boolean {
         return Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC)
-    }
-}
-
-class RestorePrayer(script: Script) : Branch<Script>(script, "Initiating Prayer Restore") {
-    override val successComponent: TreeComponent<Script> = UseAltar(script)
-    override val failedComponent: TreeComponent<Script> = CombatBranch(script)
-
-    override fun validate(): Boolean {
-        return Prayer.prayerPoints() < 25
     }
 }
 
