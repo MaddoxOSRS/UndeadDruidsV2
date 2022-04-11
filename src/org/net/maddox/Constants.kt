@@ -30,8 +30,6 @@ object Constants {
             240, //White berries
             213 //Grimy kwuarm
         ).toIntArray()
-
-
     const val FORTHOSENTRANCE = 34865
     const val ID_ALTARS = 34900
     const val ITEM_HOUSE_TELEPORT = "Teleport to house"
