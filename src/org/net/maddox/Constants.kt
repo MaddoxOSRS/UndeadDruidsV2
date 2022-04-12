@@ -30,6 +30,17 @@ object Constants {
             240, //White berries
             213 //Grimy kwuarm
         ).toIntArray()
+    val ITEMS_TO_TRACK =
+        arrayOf(
+            23499, //Grubby key
+            1397, //Air battlestaff
+            1399, //Earth battlestaff
+            207, //Grimy Ranarr
+            560, //Death rune
+            564, //Cosmic rune
+            565, //Blood rune
+            561 //Nature rune
+        ).toIntArray()
     const val FORTHOSENTRANCE = 34865
     const val ID_ALTARS = 34900
     const val ITEM_HOUSE_TELEPORT = "Teleport to house"

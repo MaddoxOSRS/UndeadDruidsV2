@@ -1,7 +1,9 @@
 package org.net.maddox
 
+import com.google.common.eventbus.Subscribe
 import org.net.maddox.branch.IsBankOpened
 import org.powbot.api.Color
+import org.powbot.api.event.InventoryChangeEvent
 import org.powbot.api.rt4.walking.model.Skill
 import org.powbot.api.script.*
 import org.powbot.api.script.paint.Paint
@@ -94,7 +96,7 @@ class Script : TreeScript() {
             .trackSkill(Skill.Strength)
             .trackSkill(Skill.Defence)
             .trackSkill(Skill.Hitpoints)
-            .trackInventoryItems(*Constants.ITEMS_TO_LOOT)
+            .trackInventoryItems(*Constants.ITEMS_TO_TRACK)
             .backgroundColor(Color.argb(255, 117, 124, 168))
             .build()
         addPaint(p)
@@ -104,6 +106,11 @@ class Script : TreeScript() {
     fun useFoodValue(valueChanged: Boolean) {
         updateVisibility("Food List", valueChanged)
         updateVisibility("Food Amount", valueChanged)
+    }
+
+    @Subscribe
+    fun inventoryChanged(inventoryChangeEvent: InventoryChangeEvent) {
+
     }
 }
 

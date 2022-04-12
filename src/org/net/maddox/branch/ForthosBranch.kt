@@ -15,7 +15,7 @@ class InventoryFull(script: Script) : Branch<Script>(script, "Inventory is full,
 
     override fun validate(): Boolean {
         return Combat.healthPercent() <= 35 || Inventory.isFull() || Inventory.stream().name("Teleport to house")
-            .isEmpty()
+            .isEmpty() || Inventory.stream().name(script.configuration.foodName).isEmpty()
 
     }
 }
